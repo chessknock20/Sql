@@ -16,7 +16,7 @@ public class StudentDAO {
         ResultSet result = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Emmadelauro2");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "********");
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeQuery();
@@ -40,7 +40,7 @@ public class StudentDAO {
         PreparedStatement preparedStatement = null;
         ResultSet result = null;
         try {
-           connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Emmadelauro2");
+           connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*******");
            preparedStatement = connection.prepareStatement(query);
             ;
            result = preparedStatement.executeQuery();
@@ -64,7 +64,7 @@ public class StudentDAO {
             Connection connection = null;
             PreparedStatement preparedStatement = null;
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "Emmadelauro2");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "********");
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, student.getName());
                 preparedStatement.setInt(2, student.getAge());
