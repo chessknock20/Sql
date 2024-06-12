@@ -16,7 +16,7 @@ public class StudentDAO {
         ResultSet result = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "********");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*****");
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, id);
             result = preparedStatement.executeQuery();
@@ -40,7 +40,7 @@ public class StudentDAO {
         PreparedStatement preparedStatement = null;
         ResultSet result = null;
         try {
-           connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*******");
+           connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*****");
            preparedStatement = connection.prepareStatement(query);
             ;
            result = preparedStatement.executeQuery();
@@ -64,7 +64,7 @@ public class StudentDAO {
             Connection connection = null;
             PreparedStatement preparedStatement = null;
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "********");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*****");
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, student.getName());
                 preparedStatement.setInt(2, student.getAge());
@@ -75,5 +75,36 @@ public class StudentDAO {
                 preparedStatement.close();
             }
         }
+    public void update (String name, int age, int passportId, int id) throws SQLException {
+        String query = "UPDATE `mydb`.`students` SET `first_name` = ?, `age` = ?, `passports_id` = ? WHERE `id` = ?;";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*****");
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(4, id);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, age);
+            preparedStatement.setInt(3, passportId);
+            preparedStatement.execute();
+        }finally {
+            connection.close();
+            preparedStatement.close();
+        }
+    }
+    public void delete (int id) throws SQLException {
+        String query = "DELETE FROM `mydb`.`students` WHERE id = ?;";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "*****");
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+        }finally {
+            connection.close();
+            preparedStatement.close();
+        }
+    }
 
     }

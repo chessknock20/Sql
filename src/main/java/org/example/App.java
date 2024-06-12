@@ -26,5 +26,13 @@ public class App {
         List<Student> list = studentDao.getStudents();
         LOGGER.info(list);
 
+        studentDao.update("Vlad", 22, 3, 3);
+        List<Student> list2 = studentDao.getStudents();
+        LOGGER.info(list2);
+
+        studentDao.delete(4);
+        List<Student> list3 = studentDao.getStudents();
+        LOGGER.info(list3);
+
     }
 }
